@@ -57,6 +57,9 @@ const Song MyFavoriteThingsSong = {
     .name = "My Favorite Things"
 };
 
+int refresh_flag = FALSE;
+void UpdateDisplay();
+
 // Global variable for Timer G8 interrupt callback function.
 void TimerG8CallbackFunction(void *CallbackObject);
 Callback_s TimerG8 = {(void *) 0,TimerG8CallbackFunction};
@@ -226,6 +229,10 @@ int main (void) {
 
     while (1) {
         __WFI(); // wait for interrupt
+        if (refresh_flag == TRUE) {
+            UpdateDisplay();
+            refresh_flag = FALSE;
+        }
     }
 
     return 0;
@@ -288,11 +295,13 @@ void PlayNote(uint32_t frequency) {
     TIMA1->COUNTERREGS.LOAD = TimerA1TimerConfig.period;
 }
 
+//note change timer callback
 void TimerG8CallbackFunction(void *CallbackObject) {
     FSMType *FSM_l = (FSMType *)CallbackObject;
 
     if (FSM_l->CurrentState == Stop) {
         PlayNote(NOTE_SILENT);
+        refresh_flag = TRUE;
     }
     else if (TIMG8->CPU_INT.IIDX == GPTIMER_CPU_INT_IIDX_STAT_Z && FSM_l->CurrentState == Start) {
         FSM_l->IntervalCounter += 1;
@@ -302,6 +311,7 @@ void TimerG8CallbackFunction(void *CallbackObject) {
             FSM_l->IntervalCounter = 0;
             FSM_l->OscillateLED ^= 1;
             PlayNote(NOTE_SILENT);
+            refresh_flag = TRUE;
         }
         else {
             PlayNote(note.note_frequency);
@@ -342,4 +352,8 @@ void Group1CallbackFunction(void *CallbackObject) {
 uint32_t ConvertFrequency(uint32_t NoteFrequency) {
     if(NoteFrequency == 0) return 0;
     return (PROJECT_CLOCK_FREQUENCY / ((32) * NoteFrequency));
+}
+
+void UpdateDisplay() {
+    
 }
