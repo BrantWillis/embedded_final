@@ -1,0 +1,454 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v5.1.1                    
+******************************************************************************
+>> Linked Mon Nov 16 12:02:03 2026
+
+OUTPUT FILE NAME:   <assessment_3_design.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000ae9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00020000  00000ed0  0001f130  R  X
+  SRAM                  20200000   00008000  0000026c  00007d94  RW X
+  BCR_CONFIG            41c00000   000000ff  00000000  000000ff  R   
+  BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000ed0   00000ed0    r-x
+  00000000    00000000    000000c0   000000c0    r-- .intvecs
+  000000c0    000000c0    00000c08   00000c08    r-x .text
+  00000cc8    00000cc8    000001b0   000001b0    r-- .rodata
+  00000e78    00000e78    00000058   00000058    r-- .cinit
+20200000    20200000    0000006c   00000000    rw-
+  20200000    20200000    0000006c   00000000    rw- .data
+20207e00    20207e00    00000200   00000000    rw-
+  20207e00    20207e00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000c0     
+                  00000000    000000c0     startup_mspm0g350x_ticlang.o (.intvecs)
+
+.text      0    000000c0    00000c08     
+                  000000c0    00000184     clock.o (.text.ClockInitialization_80MHz)
+                  00000244    00000130     clock.o (.text.ClockInitialization_40MHz)
+                  00000374    00000114     main.o (.text.RunFSMSelfTest)
+                  00000488    000000f8     main.o (.text.main)
+                  00000580    000000d4     main.o (.text.TimerG8CallbackFunction)
+                  00000654    0000009a     libc.a : memcpy16.S.obj (.text:memcpy)
+                  000006ee    00000002     startup_mspm0g350x_ticlang.o (.text.Default_Handler)
+                  000006f0    00000094     clock.o (.text.ClockInitialization_4MHz_32MHz)
+                  00000784    00000090     MKII.o (.text.InitializeBoosterpack)
+                  00000814    0000007c     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00000890    00000060     timer.o (.text.InitializeTimerInterrupt)
+                  000008f0    00000058     main.o (.text.Group1CallbackFunction)
+                  00000948    00000050     timer.o (.text.InitializeTimerClock)
+                  00000998    00000048     timer.o (.text.InitializeTimerPWM)
+                  000009e0    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text)
+                  00000a20    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00000a5c    00000034     main.o (.text.OutputLEDs)
+                  00000a90    0000002c     bsp.o (.text.ActivatePortAandB)
+                  00000abc    0000002c     main.o (.text.NextStateDiagram)
+                  00000ae8    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  00000b10    00000014     MKII.o (.text.BP_TurnOffBlueLED)
+                  00000b24    00000014     MKII.o (.text.BP_TurnOffGreenLED)
+                  00000b38    00000014     MKII.o (.text.BP_TurnOnGreenLED)
+                  00000b4c    00000014     timer.o (.text.InitializeTimerCompare)
+                  00000b60    00000014     timer.o (.text.UpdateDutyCycle)
+                  00000b74    00000012     libc.a : copy_decompress_none.c.obj (.text:decompress:none)
+                  00000b86    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  00000b88    00000010     MKII.o (.text.BP_TurnOffRedLED)
+                  00000b98    00000010     MKII.o (.text.BP_TurnOnRedLED)
+                  00000ba8    00000010     timer.o (.text.EnableTimer)
+                  00000bb8    00000010     mspm0g350x_int.o (.text.GROUP1_IRQHandler)
+                  00000bc8    00000010     mspm0g350x_int.o (.text.TIMG7_IRQHandler)
+                  00000bd8    00000010     mspm0g350x_int.o (.text.TIMG8_IRQHandler)
+                  00000be8    0000000a     clock.o (.text.ClockDelay)
+                  00000bf2    00000008     mspm0g350x_int.o (.text.ADC0_IRQHandler)
+                  00000bfa    00000008     mspm0g350x_int.o (.text.ADC1_IRQHandler)
+                  00000c02    00000008     mspm0g350x_int.o (.text.AES_IRQHandler)
+                  00000c0a    00000008     mspm0g350x_int.o (.text.CANFD0_IRQHandler)
+                  00000c12    00000008     mspm0g350x_int.o (.text.DAC0_IRQHandler)
+                  00000c1a    00000008     mspm0g350x_int.o (.text.DMA_IRQHandler)
+                  00000c22    00000008     mspm0g350x_int.o (.text.Default_Callback)
+                  00000c2a    00000008     mspm0g350x_int.o (.text.GROUP0_IRQHandler)
+                  00000c32    00000008     mspm0g350x_int.o (.text.I2C0_IRQHandler)
+                  00000c3a    00000008     mspm0g350x_int.o (.text.I2C1_IRQHandler)
+                  00000c42    00000008     FSM.o (.text.NextStateFunction)
+                  00000c4a    00000008     mspm0g350x_int.o (.text.RTC_IRQHandler)
+                  00000c52    00000008     mspm0g350x_int.o (.text.SPI0_IRQHandler)
+                  00000c5a    00000008     mspm0g350x_int.o (.text.SPI1_IRQHandler)
+                  00000c62    00000008     mspm0g350x_int.o (.text.TIMA0_IRQHandler)
+                  00000c6a    00000008     mspm0g350x_int.o (.text.TIMA1_IRQHandler)
+                  00000c72    00000008     mspm0g350x_int.o (.text.TIMG0_IRQHandler)
+                  00000c7a    00000008     mspm0g350x_int.o (.text.TIMG12_IRQHandler)
+                  00000c82    00000008     mspm0g350x_int.o (.text.TIMG6_IRQHandler)
+                  00000c8a    00000008     mspm0g350x_int.o (.text.UART0_IRQHandler)
+                  00000c92    00000008     mspm0g350x_int.o (.text.UART1_IRQHandler)
+                  00000c9a    00000008     mspm0g350x_int.o (.text.UART2_IRQHandler)
+                  00000ca2    00000008     mspm0g350x_int.o (.text.UART3_IRQHandler)
+                  00000caa    00000002     --HOLE-- [fill = 0]
+                  00000cac    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text)
+                  00000cb4    00000006     libc.a : exit.c.obj (.text:abort)
+                  00000cba    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  00000cbe    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
+                  00000cc2    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00000cc6    00000002     --HOLE-- [fill = 0]
+
+.cinit     0    00000e78    00000058     
+                  00000e78    00000043     (.cinit..data.load) [load image, compression = lzss]
+                  00000ebb    00000001     --HOLE-- [fill = 0]
+                  00000ebc    00000008     (__TI_handler_table)
+                  00000ec4    00000008     (__TI_cinit_table)
+                  00000ecc    00000004     --HOLE-- [fill = 0]
+
+.rodata    0    00000cc8    000001b0     
+                  00000cc8    0000012c     main.o (.rodata.HappyBirthday)
+                  00000df4    00000038     main.o (.rodata..L__const.main.Buzzer_Pushbutton_FSM)
+                  00000e2c    00000020     main.o (.rodata.TransitionDiagram)
+                  00000e4c    0000000f     main.o (.rodata.str1.9059077390166914652.1)
+                  00000e5b    00000004     main.o (.rodata.str1.14112174005742061988.1)
+                  00000e5f    00000003     main.o (.rodata.str1.12180500075719773345.1)
+                  00000e62    00000003     main.o (.rodata.str1.15159059442110792349.1)
+                  00000e65    00000003     main.o (.rodata.str1.17100691992556644108.1)
+                  00000e68    00000003     main.o (.rodata.str1.18227636981041470289.1)
+                  00000e6b    00000003     main.o (.rodata.str1.2846389346932560359.1)
+                  00000e6e    00000003     main.o (.rodata.str1.288608917962107522.1)
+                  00000e71    00000003     main.o (.rodata.str1.8154729771448623357.1)
+                  00000e74    00000004     --HOLE-- [fill = 0]
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.data      0    20200000    0000006c     UNINITIALIZED
+                  20200000    00000020     main.o (.data.TimerA1PWMConfig)
+                  20200020    0000000c     main.o (.data.TimerA1ClockConfig)
+                  2020002c    0000000c     main.o (.data.TimerG8ClockConfig)
+                  20200038    0000000c     main.o (.data.TimerG8InterruptConfig)
+                  20200044    00000008     main.o (.data.Group1)
+                  2020004c    00000008     main.o (.data.TimerA1TimerConfig)
+                  20200054    00000008     mspm0g350x_int.o (.data.TimerG7)
+                  2020005c    00000008     main.o (.data.TimerG8)
+                  20200064    00000008     main.o (.data.TimerG8TimerConfig)
+
+.stack     0    20207e00    00000200     UNINITIALIZED
+                  20207e00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
+                  20207e04    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20200000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    20200000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    ./
+       main.o                         920    428       100    
+       startup_mspm0g350x_ticlang.o   6      192       0      
+       FSM.o                          8      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         934    620       100    
+                                                              
+    ./LP_MSPM0G3507/
+       clock.o                        850    0         0      
+       timer.o                        304    0         0      
+       MKII.o                         236    0         0      
+       mspm0g350x_int.o               224    0         8      
+       bsp.o                          44     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1658   0         8      
+                                                              
+    /Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/armv6m-ti-none-eabi/c/libc.a
+       memcpy16.S.obj                 154    0         0      
+       copy_decompress_lzss.c.obj     124    0         0      
+       autoinit.c.obj                 60     0         0      
+       boot_cortex_m.c.obj            40     0         0      
+       copy_decompress_none.c.obj     18     0         0      
+       exit.c.obj                     6      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         406    0         0      
+                                                              
+    /Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/armv6m-ti-none-eabi/c/libsysbm.a
+       hostexit.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         4      0         0      
+                                                              
+    /Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/armv6m-ti-none-eabi/libclang_rt.builtins.a
+       aeabi_uidivmod.S.obj           64     0         0      
+       aeabi_memcpy.S.obj             8      0         0      
+       aeabi_div0.c.obj               2      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         74     0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      83        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   3076   703       620    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000ec4 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000e78, load size=00000043 bytes, run addr=20200000, run size=0000006c bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000ebc records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00000bf3  ADC0_IRQHandler               
+00000bfb  ADC1_IRQHandler               
+00000c03  AES_IRQHandler                
+00000a91  ActivatePortAandB             
+00000b11  BP_TurnOffBlueLED             
+00000b25  BP_TurnOffGreenLED            
+00000b89  BP_TurnOffRedLED              
+00000b39  BP_TurnOnGreenLED             
+00000b99  BP_TurnOnRedLED               
+00000cba  C$$EXIT                       
+00000c0b  CANFD0_IRQHandler             
+00000be9  ClockDelay                    
+00000245  ClockInitialization_40MHz     
+000006f1  ClockInitialization_4MHz_32MHz
+000000c1  ClockInitialization_80MHz     
+00000c13  DAC0_IRQHandler               
+00000c1b  DMA_IRQHandler                
+00000c23  Default_Callback              
+000006ef  Default_Handler               
+00000ba9  EnableTimer                   
+00000c2b  GROUP0_IRQHandler             
+00000bb9  GROUP1_IRQHandler             
+20200044  Group1                        
+000008f1  Group1CallbackFunction        
+00000cbb  HOSTexit                      
+00000cc8  HappyBirthday                 
+000006ef  HardFault_Handler             
+00000c33  I2C0_IRQHandler               
+00000c3b  I2C1_IRQHandler               
+00000785  InitializeBoosterpack         
+00000949  InitializeTimerClock          
+00000b4d  InitializeTimerCompare        
+00000891  InitializeTimerInterrupt      
+00000999  InitializeTimerPWM            
+000006ef  NMI_Handler                   
+00000abd  NextStateDiagram              
+00000c43  NextStateFunction             
+00000a5d  OutputLEDs                    
+000006ef  PendSV_Handler                
+00000c4b  RTC_IRQHandler                
+00000cbf  Reset_Handler                 
+00000375  RunFSMSelfTest                
+00000c53  SPI0_IRQHandler               
+00000c5b  SPI1_IRQHandler               
+000006ef  SVC_Handler                   
+000006ef  SysTick_Handler               
+00000c63  TIMA0_IRQHandler              
+00000c6b  TIMA1_IRQHandler              
+00000c73  TIMG0_IRQHandler              
+00000c7b  TIMG12_IRQHandler             
+00000c83  TIMG6_IRQHandler              
+00000bc9  TIMG7_IRQHandler              
+00000bd9  TIMG8_IRQHandler              
+20200020  TimerA1ClockConfig            
+20200000  TimerA1PWMConfig              
+2020004c  TimerA1TimerConfig            
+20200054  TimerG7                       
+2020005c  TimerG8                       
+00000581  TimerG8CallbackFunction       
+2020002c  TimerG8ClockConfig            
+20200038  TimerG8InterruptConfig        
+20200064  TimerG8TimerConfig            
+00000e2c  TransitionDiagram             
+00000c8b  UART0_IRQHandler              
+00000c93  UART1_IRQHandler              
+00000c9b  UART2_IRQHandler              
+00000ca3  UART3_IRQHandler              
+00000b61  UpdateDutyCycle               
+20208000  __STACK_END                   
+00000200  __STACK_SIZE                  
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000ec4  __TI_CINIT_Base               
+00000ecc  __TI_CINIT_Limit              
+00000ecc  __TI_CINIT_Warm               
+00000ebc  __TI_Handler_Table_Base       
+00000ec4  __TI_Handler_Table_Limit      
+00000a21  __TI_auto_init_nobinit_nopinit
+00000815  __TI_decompress_lzss          
+00000b75  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00000b87  __aeabi_idiv0                 
+00000cad  __aeabi_memcpy                
+00000cad  __aeabi_memcpy4               
+00000cad  __aeabi_memcpy8               
+000009e1  __aeabi_uidiv                 
+000009e1  __aeabi_uidivmod              
+ffffffff  __binit__                     
+UNDEFED   __mpu_init                    
+20207e00  __stack                       
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+00000ae9  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00000cc3  _system_pre_init              
+00000cb5  abort                         
+ffffffff  binit                         
+00000000  interruptVectors              
+00000489  main                          
+00000655  memcpy                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_ATRegion0_region_sz      
+00000000  __TI_ATRegion0_src_addr       
+00000000  __TI_ATRegion0_trg_addr       
+00000000  __TI_ATRegion1_region_sz      
+00000000  __TI_ATRegion1_src_addr       
+00000000  __TI_ATRegion1_trg_addr       
+00000000  __TI_ATRegion2_region_sz      
+00000000  __TI_ATRegion2_src_addr       
+00000000  __TI_ATRegion2_trg_addr       
+00000000  __TI_static_base__            
+00000000  interruptVectors              
+000000c1  ClockInitialization_80MHz     
+00000200  __STACK_SIZE                  
+00000245  ClockInitialization_40MHz     
+00000375  RunFSMSelfTest                
+00000489  main                          
+00000581  TimerG8CallbackFunction       
+00000655  memcpy                        
+000006ef  Default_Handler               
+000006ef  HardFault_Handler             
+000006ef  NMI_Handler                   
+000006ef  PendSV_Handler                
+000006ef  SVC_Handler                   
+000006ef  SysTick_Handler               
+000006f1  ClockInitialization_4MHz_32MHz
+00000785  InitializeBoosterpack         
+00000815  __TI_decompress_lzss          
+00000891  InitializeTimerInterrupt      
+000008f1  Group1CallbackFunction        
+00000949  InitializeTimerClock          
+00000999  InitializeTimerPWM            
+000009e1  __aeabi_uidiv                 
+000009e1  __aeabi_uidivmod              
+00000a21  __TI_auto_init_nobinit_nopinit
+00000a5d  OutputLEDs                    
+00000a91  ActivatePortAandB             
+00000abd  NextStateDiagram              
+00000ae9  _c_int00_noargs               
+00000b11  BP_TurnOffBlueLED             
+00000b25  BP_TurnOffGreenLED            
+00000b39  BP_TurnOnGreenLED             
+00000b4d  InitializeTimerCompare        
+00000b61  UpdateDutyCycle               
+00000b75  __TI_decompress_none          
+00000b87  __aeabi_idiv0                 
+00000b89  BP_TurnOffRedLED              
+00000b99  BP_TurnOnRedLED               
+00000ba9  EnableTimer                   
+00000bb9  GROUP1_IRQHandler             
+00000bc9  TIMG7_IRQHandler              
+00000bd9  TIMG8_IRQHandler              
+00000be9  ClockDelay                    
+00000bf3  ADC0_IRQHandler               
+00000bfb  ADC1_IRQHandler               
+00000c03  AES_IRQHandler                
+00000c0b  CANFD0_IRQHandler             
+00000c13  DAC0_IRQHandler               
+00000c1b  DMA_IRQHandler                
+00000c23  Default_Callback              
+00000c2b  GROUP0_IRQHandler             
+00000c33  I2C0_IRQHandler               
+00000c3b  I2C1_IRQHandler               
+00000c43  NextStateFunction             
+00000c4b  RTC_IRQHandler                
+00000c53  SPI0_IRQHandler               
+00000c5b  SPI1_IRQHandler               
+00000c63  TIMA0_IRQHandler              
+00000c6b  TIMA1_IRQHandler              
+00000c73  TIMG0_IRQHandler              
+00000c7b  TIMG12_IRQHandler             
+00000c83  TIMG6_IRQHandler              
+00000c8b  UART0_IRQHandler              
+00000c93  UART1_IRQHandler              
+00000c9b  UART2_IRQHandler              
+00000ca3  UART3_IRQHandler              
+00000cad  __aeabi_memcpy                
+00000cad  __aeabi_memcpy4               
+00000cad  __aeabi_memcpy8               
+00000cb5  abort                         
+00000cba  C$$EXIT                       
+00000cbb  HOSTexit                      
+00000cbf  Reset_Handler                 
+00000cc3  _system_pre_init              
+00000cc8  HappyBirthday                 
+00000e2c  TransitionDiagram             
+00000ebc  __TI_Handler_Table_Base       
+00000ec4  __TI_CINIT_Base               
+00000ec4  __TI_Handler_Table_Limit      
+00000ecc  __TI_CINIT_Limit              
+00000ecc  __TI_CINIT_Warm               
+20200000  TimerA1PWMConfig              
+20200000  __start___llvm_prf_bits       
+20200000  __start___llvm_prf_cnts       
+20200000  __stop___llvm_prf_bits        
+20200000  __stop___llvm_prf_cnts        
+20200020  TimerA1ClockConfig            
+2020002c  TimerG8ClockConfig            
+20200038  TimerG8InterruptConfig        
+20200044  Group1                        
+2020004c  TimerA1TimerConfig            
+20200054  TimerG7                       
+2020005c  TimerG8                       
+20200064  TimerG8TimerConfig            
+20207e00  __stack                       
+20208000  __STACK_END                   
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[112 symbols]

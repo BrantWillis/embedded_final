@@ -1,0 +1,82 @@
+[
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/final_la_design/FSM.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/ADC.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/DAC.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/LCD.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/MKII.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/SPI.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/bsp.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/clock.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/i2c.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/mspm0g350x_int.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/opt3001.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/timer.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/tmp006.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/LP_MSPM0G3507/uart.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/final_la_design/main.c"
+   },
+   {
+      "directory" : "/Users/brantwillis/ECE3430_workspace/final_la_design/Debug",
+      "command"   : "clang++ -I\"/Users/brantwillis/ECE3430_workspace/final_la_design\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_11_00_07/source\" -D__MSPM0G3507__ -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/lib/clang/22/include\" -isystem\"/Applications/ti/ccs2100/ccs/tools/compiler/ti-cgt-armllvm_5.1.1.LTS/include/c\" -xc",
+      "file"      : "/Users/brantwillis/ECE3430_workspace/final_la_design/startup_mspm0g350x_ticlang.c"
+   }
+]
