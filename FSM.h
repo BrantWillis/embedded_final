@@ -9,6 +9,10 @@
 #define INACTIVE 0
 #define ACTIVE 1
 
+#define JOYSTICK_LEFT 0
+#define JOYSTICK_RIGHT 1
+#define JOYSTICK_CENTER 2
+
 typedef enum {
     Stop, Start
 } FSMState;
@@ -24,6 +28,7 @@ typedef struct {
     uint32_t CurrentNote;
     uint32_t FailedTest; // to hold LED1 state until Start state begins
     uint32_t OscillateLED;
+    uint32_t JoystickDirection; //0 = left, 1 = right, 2 = center
 } FSMType;
 
 typedef struct FSMPtrStruct {

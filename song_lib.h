@@ -79,7 +79,7 @@ const Note HappyBirthday[] = {
 };
 
 const Note MyFavoriteThings[] = {
-    {"E4", NOTE_E4, WHOLE},
+    {"E4", NOTE_E4, QUARTER},
     {"B4", NOTE_B4, QUARTER},
     {"B4", NOTE_B4, QUARTER},
     {"F#4", NOTE_FS4, QUARTER},

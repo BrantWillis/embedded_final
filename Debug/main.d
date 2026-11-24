@@ -34,7 +34,10 @@ main.o: ../main.c \
  ../../LP_MSPM0G3507/bsp.h ../../LP_MSPM0G3507/clock.h \
  ../../LP_MSPM0G3507/timer.h ../../LP_MSPM0G3507/mspm0g350x_int.h \
  ../FSM.h ../music.h ../tone_pitch.h ../../LP_MSPM0G3507/MKII.h \
- ../song_lib.h
+ ../song_lib.h ../../LP_MSPM0G3507/LCD.h \
+ ../../LP_MSPM0G3507/bsp.h \
+ ../../LP_MSPM0G3507/clock.h \
+ ../../LP_MSPM0G3507/SPI.h
 /Applications/ti/mspm0_sdk_2_11_00_07/source/ti/devices/msp/msp.h:
 /Applications/ti/mspm0_sdk_2_11_00_07/source/ti/devices/DeviceFamily.h:
 /Applications/ti/mspm0_sdk_2_11_00_07/source/ti/devices/msp/m0p/mspm0g350x.h:
@@ -74,3 +77,7 @@ main.o: ../main.c \
 ../tone_pitch.h:
 ../../LP_MSPM0G3507/MKII.h:
 ../song_lib.h:
+../../LP_MSPM0G3507/LCD.h:
+../../LP_MSPM0G3507/bsp.h:
+../../LP_MSPM0G3507/clock.h:
+../../LP_MSPM0G3507/SPI.h:

@@ -24,10 +24,12 @@
 #include "../LP_MSPM0G3507/MKII.h"
 #include "music.h"
 #include "song_lib.h"
+#include "../LP_MSPM0G3507/LCD.h"
+
+#include <stdio.h>
 
 // Function prototypes
 FSMState NextStateDiagram(void *FSM);
-void OutputLEDs(void *FSM);
 
 // Expected 2x4 Transition Table - row 1 stop, row 2 start
 // col 1 - s1 off, s2 off
@@ -48,17 +50,16 @@ const Song MaryHadALittleLambSong = {
 const Song HappyBirthdaySong = {
     .notes = HappyBirthday,
     .length = 25,
-    .name = "Happy Birthday"
+    .name = "Happy Birthday       "
 };
 
 const Song MyFavoriteThingsSong = {
     .notes = MyFavoriteThings,
     .length = 42,
-    .name = "My Favorite Things"
+    .name = "My Favorite Things   "
 };
 
 int refresh_flag = FALSE;
-void UpdateDisplay();
 
 // Global variable for Timer G8 interrupt callback function.
 void TimerG8CallbackFunction(void *CallbackObject);
@@ -122,77 +123,27 @@ Timer_PWMConfig TimerA1PWMConfig =
  .duty = 1000,
 };
 
-void RunFSMSelfTest(FSMType *fsm)
-{
-    int pass_count = 0;
-    FSMType test_fsm = *fsm;
-
-    // Verify all 8 state transitions (2 states x 4 input combinations)
-    for (int s = 0; s < 2; s++) {
-        for (int inp = 0; inp < 4; inp++) {
-            test_fsm.CurrentState = (FSMState)s;
-
-            // Expected 2x4 Transition Table - row 1 stop, row 2 start
-            // col 1 - s1 off, s2 off
-            // col 2 - s1 off, s2 on
-            // col 3 - s1 on, s2 off
-            // col 4 - s1 on, s2 on
-            test_fsm.Input1 = 0;
-            test_fsm.Input2 = 0;
-            if (inp > 1) {
-                test_fsm.Input1 = 1;
-            }
-            if (inp == 1 || inp == 3) {
-                test_fsm.Input2 = 1;
-            }
-
-            FSMState next = test_fsm.NextStateFuncPtr((void *)&test_fsm);
-            if (next == ExpectedTransitions[s][inp]) {
-                pass_count++;
-            }
-        }
-    }
-
-    // Visual indication on LaunchPad
-    if (pass_count == 8) {
-        // All transitions correct:
-        // Blink LED1 3 times
-        BP_TurnOffGreenLED();
-        BP_TurnOffRedLED();
-        BP_TurnOffBlueLED();
-
-        for (int i = 0; i < 3; i++) {
-            BP_TurnOnRedLED();
-            ClockDelay(250 * ONE_MILLISECOND_DELAY);
-            BP_TurnOffRedLED();
-            ClockDelay(250 * ONE_MILLISECOND_DELAY);
-        }
-    }
-    else {
-        BP_TurnOnRedLED();
-        fsm->FailedTest = TRUE;
-    }
-}
-
 int main (void) {
     FSMType Buzzer_Pushbutton_FSM = {
         .Input1 = INACTIVE,
         .Input2 = INACTIVE,
         .CurrentState = Stop,
         .NextStateFuncPtr = NextStateDiagram,
-        .OutputFuncPtr = OutputLEDs,
         .FailedTest = FALSE,
         .IntervalCounter = 0,
         .CurrentSong = MyFavoriteThingsSong,
         .CurrentNote = NOTE_SILENT,
-        .OscillateLED = 0
+        .OscillateLED = 0,
+        .JoystickDirection = JOYSTICK_CENTER
     };
 
     InitializeBoosterpack(CLOCK_FREQUENCY);
 
-    Group1.CallbackObject = (void *) &Buzzer_Pushbutton_FSM;
+    LCD_Init();
+    LCD_FillScreen(LCD_BLACK);
+    LCD_SetTextColor(LCD_CYAN);
 
-    RunFSMSelfTest(&Buzzer_Pushbutton_FSM);
+    Group1.CallbackObject = (void *) &Buzzer_Pushbutton_FSM;
 
     __disable_irq();
 
@@ -227,12 +178,34 @@ int main (void) {
     EnableTimer(TIMG8);
     __enable_irq();
 
+    char OutputBuffer[200];
+
+    //Text on the LCD: the song name, the name of each note as it plays,
+    //and the player status (playing or stopped), updating as S1 starts
+    //and S2 stops the song
+
+    char *what;
+    char *what2;
+
     while (1) {
         __WFI(); // wait for interrupt
-        if (refresh_flag == TRUE) {
+        //LCD_FillScreen(LCD_BLACK);
+        LCD_SetCursor(0, 0);
+        what = (Buzzer_Pushbutton_FSM.CurrentState ? "Playing" : "Paused");
+        if(Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_LEFT) what2 = "Left";
+        else if (Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_RIGHT) what2 = "Right";
+        else what2 = "Center";
+        snprintf(OutputBuffer, sizeof(OutputBuffer), "%s\nNote: %s\n%s\nJoystick: %s\n",
+            Buzzer_Pushbutton_FSM.CurrentSong.name,
+            Buzzer_Pushbutton_FSM.CurrentSong.notes[Buzzer_Pushbutton_FSM.CurrentNote].name,
+            what,
+            what2
+            );
+        LCD_OutString(OutputBuffer);
+        /*if (refresh_flag == TRUE) {
             UpdateDisplay();
             refresh_flag = FALSE;
-        }
+        }*/
     }
 
     return 0;
@@ -265,25 +238,6 @@ FSMState NextStateDiagram(void *FSM)
     return NextState;
 }
 
-void OutputLEDs(void *FSM)
-{
-    FSMType * FSM_l = (FSMType *)FSM;
-
-    if (FSM_l->FailedTest == TRUE) {
-        BP_TurnOnRedLED();
-    }
-    else if (FSM_l->CurrentState == Stop) {
-        BP_TurnOnGreenLED();
-        BP_TurnOffRedLED();
-    }
-    else if (FSM_l->CurrentState == Start) {
-        if(FSM_l->OscillateLED == 0) BP_TurnOffGreenLED();
-        else BP_TurnOnGreenLED();
-        
-        BP_TurnOffRedLED();
-    }
-}
-
 void PlayNote(uint32_t frequency) {
     uint32_t newPer = ConvertFrequency(frequency);
     
@@ -309,7 +263,6 @@ void TimerG8CallbackFunction(void *CallbackObject) {
         if(FSM_l->IntervalCounter == note.delay) {
             FSM_l->CurrentNote += 1;
             FSM_l->IntervalCounter = 0;
-            FSM_l->OscillateLED ^= 1;
             PlayNote(NOTE_SILENT);
             refresh_flag = TRUE;
         }
@@ -318,10 +271,11 @@ void TimerG8CallbackFunction(void *CallbackObject) {
         }
 
         //loop around functionality
-        if(FSM_l->CurrentNote == FSM_l->CurrentSong.length) FSM_l->CurrentNote = 0;
+        if(FSM_l->CurrentNote == FSM_l->CurrentSong.length) {
+            FSM_l->CurrentNote = 0;
+            FSM_l->CurrentSong = HappyBirthdaySong;
+        }
     }
-
-    OutputLEDs(CallbackObject);
 }
 
 void Group1CallbackFunction(void *CallbackObject) {
@@ -341,19 +295,10 @@ void Group1CallbackFunction(void *CallbackObject) {
     }
 
     FSM_l->CurrentState = NextStateFunction(FSM_l);
-
-    //remove test fail flag once FSM starts (will turn off red LED)
-    if(FSM_l->FailedTest == TRUE && FSM_l->CurrentState == Start) {
-        FSM_l->FailedTest = FALSE;
-    }
 }
 
 //use 0Hz as silence, otherwise use formula
 uint32_t ConvertFrequency(uint32_t NoteFrequency) {
     if(NoteFrequency == 0) return 0;
     return (PROJECT_CLOCK_FREQUENCY / ((32) * NoteFrequency));
-}
-
-void UpdateDisplay() {
-    
 }
