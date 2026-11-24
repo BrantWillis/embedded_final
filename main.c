@@ -237,7 +237,7 @@ void PlayNote(uint32_t frequency) {
     TIMA1->COUNTERREGS.LOAD = TimerA1TimerConfig.period;
 }
 
-//note change timer callback
+//note change and joystick read timer callback
 void TimerG8CallbackFunction(void *CallbackObject) {
     FSMType *FSM_l = (FSMType *)CallbackObject;
 
@@ -272,13 +272,9 @@ void TimerG8CallbackFunction(void *CallbackObject) {
             PlayNote(note.note_frequency);
         }
 
-        //loop around functionality
+        //loop around song functionality
         if(FSM_l->CurrentNote == SongLibrary[FSM_l->SongIndex].length) {
             FSM_l->CurrentNote = 0;
-            FSM_l->SongIndex += 1;
-            if(FSM_l->SongIndex == library_size) {
-                FSM_l->SongIndex = 0;
-            }
             refresh_flag = TRUE;
         }
     }
