@@ -10,11 +10,3 @@ FSMState NextStateFunction(void *FSM)
 
     return NextState;
 }
-
-void OutputFunction(void *FSM)
-{
-    FSMType * FSM_l = (FSMType *) FSM;
-
-    // Callback function to output function in main.c.
-    FSM_l->OutputFuncPtr(FSM);
-}

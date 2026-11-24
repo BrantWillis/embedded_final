@@ -31,16 +31,6 @@
 // Function prototypes
 FSMState NextStateDiagram(void *FSM);
 
-// Expected 2x4 Transition Table - row 1 stop, row 2 start
-// col 1 - s1 off, s2 off
-// col 2 - s1 off, s2 on
-// col 3 - s1 on, s2 off
-// col 4 - s1 on, s2 on
-static const FSMState ExpectedTransitions[2][4] = {
-    {Stop, Stop, Start, Stop}, //stop
-    {Start, Stop, Start, Stop} //start
-};
-
 const Song MaryHadALittleLambSong = {
     .notes = MaryHadALittleLamb,
     .length = 26,
@@ -50,16 +40,19 @@ const Song MaryHadALittleLambSong = {
 const Song HappyBirthdaySong = {
     .notes = HappyBirthday,
     .length = 25,
-    .name = "Happy Birthday       "
+    .name = "Happy Birthday      "
 };
 
 const Song MyFavoriteThingsSong = {
     .notes = MyFavoriteThings,
     .length = 42,
-    .name = "My Favorite Things   "
+    .name = "My Favorite Things  "
 };
 
-int refresh_flag = FALSE;
+const Song SongLibrary[] = {MyFavoriteThingsSong, MaryHadALittleLambSong, HappyBirthdaySong};
+int library_size = 3;
+
+volatile int refresh_flag = FALSE;
 
 // Global variable for Timer G8 interrupt callback function.
 void TimerG8CallbackFunction(void *CallbackObject);
@@ -129,12 +122,10 @@ int main (void) {
         .Input2 = INACTIVE,
         .CurrentState = Stop,
         .NextStateFuncPtr = NextStateDiagram,
-        .FailedTest = FALSE,
         .IntervalCounter = 0,
-        .CurrentSong = MyFavoriteThingsSong,
         .CurrentNote = NOTE_SILENT,
-        .OscillateLED = 0,
-        .JoystickDirection = JOYSTICK_CENTER
+        .JoystickDirection = JOYSTICK_CENTER,
+        .SongIndex = 0
     };
 
     InitializeBoosterpack(CLOCK_FREQUENCY);
@@ -184,28 +175,26 @@ int main (void) {
     //and the player status (playing or stopped), updating as S1 starts
     //and S2 stops the song
 
-    char *what;
-    char *what2;
+    char *CurrStateStr;
+    char *JstckDirStr;
 
     while (1) {
         __WFI(); // wait for interrupt
-        //LCD_FillScreen(LCD_BLACK);
-        LCD_SetCursor(0, 0);
-        what = (Buzzer_Pushbutton_FSM.CurrentState ? "Playing" : "Paused");
-        if(Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_LEFT) what2 = "Left";
-        else if (Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_RIGHT) what2 = "Right";
-        else what2 = "Center";
-        snprintf(OutputBuffer, sizeof(OutputBuffer), "%s\nNote: %s\n%s\nJoystick: %s\n",
-            Buzzer_Pushbutton_FSM.CurrentSong.name,
-            Buzzer_Pushbutton_FSM.CurrentSong.notes[Buzzer_Pushbutton_FSM.CurrentNote].name,
-            what,
-            what2
-            );
-        LCD_OutString(OutputBuffer);
-        /*if (refresh_flag == TRUE) {
-            UpdateDisplay();
+        if(refresh_flag == TRUE) {
             refresh_flag = FALSE;
-        }*/
+            LCD_SetCursor(0, 0);
+            CurrStateStr = (Buzzer_Pushbutton_FSM.CurrentState ? "Playing" : "Paused");
+            if(Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_LEFT) JstckDirStr = "Left";
+            else if (Buzzer_Pushbutton_FSM.JoystickDirection == JOYSTICK_RIGHT) JstckDirStr = "Right";
+            else JstckDirStr = "Center";
+            snprintf(OutputBuffer, sizeof(OutputBuffer), "%s\nNote: %s\n%s\nJoystick: %s\n",
+                SongLibrary[Buzzer_Pushbutton_FSM.SongIndex].name,
+                SongLibrary[Buzzer_Pushbutton_FSM.SongIndex].notes[Buzzer_Pushbutton_FSM.CurrentNote].name,
+                CurrStateStr,
+                JstckDirStr
+                );
+            LCD_OutString(OutputBuffer);
+        }
     }
 
     return 0;
@@ -232,7 +221,6 @@ FSMState NextStateDiagram(void *FSM)
         if(FSM_l->Input1 == 0) CallIndex++;
     }
 
-    // TODO: Look up entry in TransitionDiagram and dereference the NextState pointer
     NextState = TransitionDiagram[NextState].NextState[CallIndex]->CurrentState;
 
     return NextState;
@@ -253,13 +241,27 @@ void PlayNote(uint32_t frequency) {
 void TimerG8CallbackFunction(void *CallbackObject) {
     FSMType *FSM_l = (FSMType *)CallbackObject;
 
+    /*
+
+    JOYSTICK ADC READ HERE
+    read value, convert to direction, set in FSM_l
+    increment SongIndex if right, decrement if left (remember to set IntervalCounter and CurrentNote to 0 too)
+    set refresh flag if value changes
+    if direction isn't center and we were in STOP, go to START
+    
+    */
+
+    //loop around song library functionality
+    if(FSM_l->SongIndex == library_size) FSM_l->SongIndex = 0;
+    else if(FSM_l->SongIndex == -1) FSM_l->SongIndex = library_size - 1;
+
     if (FSM_l->CurrentState == Stop) {
         PlayNote(NOTE_SILENT);
-        refresh_flag = TRUE;
+        //refresh_flag = TRUE;
     }
     else if (TIMG8->CPU_INT.IIDX == GPTIMER_CPU_INT_IIDX_STAT_Z && FSM_l->CurrentState == Start) {
         FSM_l->IntervalCounter += 1;
-        Note note = FSM_l->CurrentSong.notes[FSM_l->CurrentNote];
+        Note note = SongLibrary[FSM_l->SongIndex].notes[FSM_l->CurrentNote];
         if(FSM_l->IntervalCounter == note.delay) {
             FSM_l->CurrentNote += 1;
             FSM_l->IntervalCounter = 0;
@@ -271,9 +273,13 @@ void TimerG8CallbackFunction(void *CallbackObject) {
         }
 
         //loop around functionality
-        if(FSM_l->CurrentNote == FSM_l->CurrentSong.length) {
+        if(FSM_l->CurrentNote == SongLibrary[FSM_l->SongIndex].length) {
             FSM_l->CurrentNote = 0;
-            FSM_l->CurrentSong = HappyBirthdaySong;
+            FSM_l->SongIndex += 1;
+            if(FSM_l->SongIndex == library_size) {
+                FSM_l->SongIndex = 0;
+            }
+            refresh_flag = TRUE;
         }
     }
 }
@@ -295,6 +301,9 @@ void Group1CallbackFunction(void *CallbackObject) {
     }
 
     FSM_l->CurrentState = NextStateFunction(FSM_l);
+
+    //refresh on every press even if state doesn't change (safer)
+    refresh_flag = TRUE;
 }
 
 //use 0Hz as silence, otherwise use formula

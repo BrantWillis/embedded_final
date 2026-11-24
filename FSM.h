@@ -22,12 +22,9 @@ typedef struct {
     uint32_t Input2;                      // Current input of the FSM
     FSMState CurrentState;                      // Current state of the FSM
     FSMState (*NextStateFuncPtr)(void *FSM);    // Next-state function pointer
-    void (*OutputFuncPtr)(void *FSM);           // Output function pointer
     uint32_t IntervalCounter;
-    Song CurrentSong;
+    uint32_t SongIndex; //index of song chosen from library
     uint32_t CurrentNote;
-    uint32_t FailedTest; // to hold LED1 state until Start state begins
-    uint32_t OscillateLED;
     uint32_t JoystickDirection; //0 = left, 1 = right, 2 = center
 } FSMType;
 
@@ -38,6 +35,5 @@ typedef struct FSMPtrStruct {
 
 // Function Prototypes
 FSMState NextStateFunction(void *FSM);
-void OutputFunction(void *FSM);
 
 #endif /* FSM_H_ */
