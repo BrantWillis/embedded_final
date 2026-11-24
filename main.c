@@ -27,6 +27,13 @@
 #include "../LP_MSPM0G3507/LCD.h"
 
 #include <stdio.h>
+#include <math.h>
+#include <stdint.h>
+
+const int sample_rate = 48000;       // sample rate (Hz)
+#define LUT_SIZE 1024  // lookup table size
+
+uint16_t LUT[LUT_SIZE];      // our sine wave LUT
 
 // Function prototypes
 FSMState NextStateDiagram(void *FSM);
@@ -117,6 +124,12 @@ Timer_PWMConfig TimerA1PWMConfig =
 };
 
 int main (void) {
+
+    //lookup table generation?
+    for (int i = 0; i < LUT_SIZE; i++) {
+        LUT[i] = (uint16_t)(2048 * sinf(2.0f * M_PI * (float)i / LUT_SIZE));
+    }
+
     FSMType Buzzer_Pushbutton_FSM = {
         .Input1 = INACTIVE,
         .Input2 = INACTIVE,
